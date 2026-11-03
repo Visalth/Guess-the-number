@@ -1,0 +1,14 @@
+{
+  "name": "guess-the-number",
+  "version": "1.0.0",
+  "description": "Retro Guess the Number game with a Build/Test/Deploy CI/CD pipeline",
+  "private": true,
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "test": "jest --verbose",
+    "healthcheck": "bash scripts/healthcheck.sh"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
