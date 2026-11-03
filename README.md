@@ -98,7 +98,7 @@ bash scripts/healthcheck.sh https://guess-the-number-omega-seven.vercel.app heal
 Example `health.log`:
 
 ```
-2026-11-03 12:19:49 UTC | UP   | https://guess-the-number-omega-seven.vercel.app | HTTP 200 | 0.010304s | attempt 1/3
+2026-11-03 12:42:20 UTC | UP   | https://guess-the-number-omega-seven.vercel.app | HTTP 200 | 0.137280s | attempt 1/3
 ```
 
 **Bonus:**
