@@ -95,14 +95,19 @@ Run it yourself:
 bash scripts/healthcheck.sh https://guess-the-number-omega-seven.vercel.app health.log
 ```
 
-Example `health.log`:
+Real results from the pipeline runs are saved in [`health.log`](health.log). Each pipeline run also
+uploads its own `health.log` as an artifact (`health-report`).
 
 ```
+2026-11-03 12:40:21 UTC | DOWN | https://guess-the-number-6mqu8t6qt-irakli-katsitadze.vercel.app | all 3 attempts failed
 2026-11-03 12:42:20 UTC | UP   | https://guess-the-number-omega-seven.vercel.app | HTTP 200 | 0.137280s | attempt 1/3
 ```
 
+The first run was DOWN because it checked the per-deploy URL, which Vercel protects with a login
+(HTTP 302). It was fixed by checking the public production domain instead.
+
 **Bonus:**
-- **Status dashboard:** `scripts/dashboard.sh` turns `health.log` into `status.html` (current status, uptime %, last 20 checks).
+- **Status dashboard:** `scripts/dashboard.sh` turns `health.log` into [`status.html`](status.html) (current status, uptime %, last 20 checks).
 - **Automatic rollback:** if the health check fails after deploy, the pipeline runs `vercel rollback`.
 
 ## 5. Screenshots
