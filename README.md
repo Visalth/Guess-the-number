@@ -4,7 +4,7 @@ A retro-style **Guess the Number** browser game, used as the base for a DevOps m
 The project shows version control, automated build, unit testing, CI/CD with GitHub Actions,
 automatic deployment to Vercel, and monitoring with a health check and automatic rollback.
 
-**Live app (Vercel):** https://YOUR-PROJECT.vercel.app
+**Live app (Vercel):** https://guess-the-number-omega-seven.vercel.app
 
 ## 1. Project description
 
@@ -92,13 +92,13 @@ flowchart LR
 Run it yourself:
 
 ```bash
-bash scripts/healthcheck.sh https://YOUR-PROJECT.vercel.app health.log
+bash scripts/healthcheck.sh https://guess-the-number-omega-seven.vercel.app health.log
 ```
 
 Example `health.log`:
 
 ```
-2026-11-03 12:19:49 UTC | UP   | https://YOUR-PROJECT.vercel.app | HTTP 200 | 0.010304s | attempt 1/3
+2026-11-03 12:19:49 UTC | UP   | https://guess-the-number-omega-seven.vercel.app | HTTP 200 | 0.010304s | attempt 1/3
 ```
 
 **Bonus:**
