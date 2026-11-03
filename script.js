@@ -1,8 +1,8 @@
 'use strict';
 
-let secretNumber = Math.floor(Math.random() * 20) + 1;
+let secretNumber = Game.randomNumber();
 let highscore = 0;
-let score = 20;
+let score = Game.START_SCORE;
 
 const display = function (message) {
   document.querySelector('.message').textContent = message;
@@ -13,34 +13,33 @@ const updateScore = function () {
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
+  const result = Game.checkGuess(guess, secretNumber);
 
-  if (!guess) {
-    display('No Number!');
-  } else if (guess === secretNumber) {
-    display('You Win!');
+  if (result === 'empty' || result === 'invalid') {
+    display(Game.messages[result]);
+  } else if (result === 'win') {
+    display(Game.messages.win);
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '25rem';
     document.querySelector('.number').textContent = secretNumber;
-    if (score > highscore) highscore = score;
+    highscore = Game.nextHighscore(score, highscore);
     document.querySelector('.highscore').textContent = highscore;
-  } else if (guess !== secretNumber) {
-    if (score > 1) {
-      display(guess > secretNumber ? 'Too high!' : 'Too low!');
-      score--;
-      updateScore();
+  } else {
+    score = Game.nextScore(score);
+    updateScore();
+    if (score > 0) {
+      display(Game.messages[result]);
     } else {
-      display('You Lose!');
-      score = 0;
-      updateScore();
+      display(Game.messages.lose);
       document.querySelector('body').style.backgroundColor = '#8B0000';
     }
   }
 });
 
 document.querySelector('.again').addEventListener('click', function () {
-  score = 20;
+  score = Game.START_SCORE;
   updateScore();
-  secretNumber = Math.floor(Math.random() * 20) + 1;
+  secretNumber = Game.randomNumber();
   display('Start guessing...');
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
